@@ -39,3 +39,11 @@ theorem φ_ψ_not_equivalent :
   -- since α ⊭ φ and α ⊨ ψ, φ and ψ are not equivalent.
   intro h_equiv
   exact α_not_models_φ (h_equiv.mpr α_models_ψ)
+    -- For an iff proof h : P <-> Q, Lean gives two directions:
+      -- h.mp: P->Q (forward direction)
+      -- h.mpr: Q->P (reverse direction)
+    -- assuming φ ↔ ψ, and since ψ is true, the reverse implication of the
+    -- equivalence gives that φ is true
+    -- More fine grained:
+      -- have φ_true : φ False False False := h_equiv.mpr α_models_ψ
+      -- exact α_not_models_φ φ_true
